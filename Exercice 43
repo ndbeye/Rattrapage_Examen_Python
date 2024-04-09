@@ -1,0 +1,40 @@
+import turtle
+
+class Rectangle:
+    def __init__(self, length, width):
+        self.length = length
+        self.width = width
+
+    def draw(self):
+        turtle.forward(self.length)
+        turtle.right(90)
+        turtle.forward(self.width)
+        turtle.right(90)
+        turtle.forward(self.length)
+        turtle.right(90)
+        turtle.forward(self.width)
+        turtle.right(90)
+
+class Square(Rectangle):
+    def __init__(self, side_length, rotation_angle=30):
+        super().__init__(side_length, side_length)
+        self.rotation_angle = rotation_angle
+
+    def draw(self):
+        turtle.fillcolor("black")
+        turtle.begin_fill()
+        turtle.right(self.rotation_angle)
+        super().draw()
+        turtle.end_fill()
+        turtle.hideturtle()
+
+
+turtle.speed(0)
+rectangle = Rectangle(100, 50)
+rectangle.draw()
+
+turtle.reset()
+square = Square(100)
+square.draw()
+
+turtle.done()
